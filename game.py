@@ -84,39 +84,39 @@ while (count > 0):
                     reverseCheat = True
 	        if event.key == ord('x'):
        	            slowCheat = True
-	        if event.key == K_LEFT or event.key == ord('a'):
+	        if (event.key == K_LEFT) or (event.key == ord('a')):
 	            moveRight = False
 	            moveLeft = True
-                if event.key == K_RIGHT or event.key == ord('d'):
+                if (event.key == K_RIGHT) or (event.key == ord('d')):
 	            moveLeft = False
 	            moveRight = True
-                if event.key == K_UP or event.key == ord('w'):
+                if (event.key == K_UP) or (event.key == ord('w')):
 	            moveDown = False
 	            moveUp = True
-                if event.key == K_DOWN or event.key == ord('s'):
-	            moveUp = False
+                if (event.key == K_DOWN) or (event.key == ord('s')):
+	            	moveUp = False
                     moveDown = True
 	
             if event.type == KEYUP:
        	        if event.key == ord('z'):
-     		    reverseCheat = False
+     		    	reverseCheat = False
      	    	    score = 0
                 if event.key == ord('x'):
-     		    slowCheat = False
-     		    score = 0
+     		    	slowCheat = False
+     		    	score = 0
     	        if event.key == K_ESCAPE:
-     		    terminate()
+     		    	terminate()
 	
-	        if event.key == K_LEFT or event.key == ord('a'):
+	        if (event.key == K_LEFT) or (event.key == ord('a')):
     		    moveLeft = False
-    	        if event.key == K_RIGHT or event.key == ord('d'):
+    	        if (event.key == K_RIGHT) or (event.key == ord('d')):
      	    	    moveRight = False
-    	        if event.key == K_UP or event.key == ord('w'):
+    	        if (event.key == K_UP) or (event.key == ord('w')):
     	            moveUp = False
-    	        if event.key == K_DOWN or event.key == ord('s'):
-     		    moveDown = False
+    	        if (event.key == K_DOWN) or (event.key == ord('s')):
+     		    	moveDown = False
 	
-        if not reverseCheat and not slowCheat:
+        if not (reverseCheat or slowCheat):
      		baddieAddCounter += 1
     	if baddieAddCounter == ADDNEWBADDIERATE:
      		baddieAddCounter = 0
@@ -137,17 +137,17 @@ while (count > 0):
      		            }	
      		baddies.append(sideRight)
 	
-	if moveLeft and playerRect.left > 0:
+	if (moveLeft) and (playerRect.left > 0):
 	 	playerRect.move_ip(-1 * PLAYERMOVERATE, 0)
-	if moveRight and playerRect.right < WINDOWWIDTH:
+	if (moveRight) and (playerRect.right < WINDOWWIDTH):
 	 	playerRect.move_ip(PLAYERMOVERATE, 0)
-	if moveUp and playerRect.top > 0:
+	if (moveUp) and (playerRect.top > 0):
 	 	playerRect.move_ip(0, -1 * PLAYERMOVERATE)
-	if moveDown and playerRect.bottom < WINDOWHEIGHT:
+	if (moveDown) and (playerRect.bottom < WINDOWHEIGHT):
 	 	playerRect.move_ip(0, PLAYERMOVERATE)
 	
 	for b in baddies:
-		if not reverseCheat and not slowCheat:
+		if not (reverseCheat or slowCheat):
 	 		b['rect'].move_ip(0, b['speed'])
 	 	elif reverseCheat:
 	 		b['rect'].move_ip(0, -5)
